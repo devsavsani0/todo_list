@@ -53,6 +53,18 @@ A lightweight task manager built with Django. Add tasks, edit their titles, and 
 
 6. Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in your browser.
 
+## Deploying to Vercel
+
+Vercel detects the Django project from `manage.py` and its WSGI configuration.
+Set the `DJANGO_SECRET_KEY` environment variable in Vercel to a unique secret
+before deploying. Vercel-provided deployment hostnames are allowed automatically.
+If you use a custom domain, add it to `DJANGO_ALLOWED_HOSTS` as a comma-separated
+list of hostnames (without `https://`).
+
+The app currently uses SQLite. Vercel's function filesystem is not persistent,
+so tasks created after deployment are not reliably retained. Use a persistent
+database service before relying on hosted task storage.
+
 ## Running tests
 
 Run the Django test suite with:
